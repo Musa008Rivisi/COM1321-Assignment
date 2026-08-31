@@ -123,4 +123,35 @@ public class Products {
             System.out.println("The product cannot be located. Invalid Product");
         }
     }
+    
+    public void DeleteProduct() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Please enter the product code to delete: ");
+        String deleteCode = scanner.nextLine();
+
+        Product foundProduct = null;
+
+        for (int i = 0; i < productList.size(); i++) {
+            Product currentProduct = productList.get(i);
+
+            if (currentProduct.getProductCode().equals(deleteCode)) {
+                foundProduct = currentProduct;
+            }
+        }
+
+        if (foundProduct == null) {
+            System.out.println("The product cannot be located. Invalid Product");
+        } else {
+            System.out.print("Are you sure you want to delete this product? (y) Yes, (n) No ");
+            String confirm = scanner.nextLine();
+
+            if (confirm.equals("y")) {
+                productList.remove(foundProduct);
+                System.out.println("Product has been deleted successfully!!!");
+            } else {
+                System.out.println("Delete cancelled.");
+            }
+        }
+    }
 }
