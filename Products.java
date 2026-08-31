@@ -153,5 +153,67 @@ public class Products {
                 System.out.println("Delete cancelled.");
             }
         }
+        
+   
+    }
+    
+    public void UpdateProduct() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Please enter the product code to update: ");
+        String updateCode = scanner.nextLine();
+
+        Product foundProduct = null;
+
+        for (int i = 0; i < productList.size(); i++) {
+            Product currentProduct = productList.get(i);
+
+            if (currentProduct.getProductCode().equals(updateCode)) {
+                foundProduct = currentProduct;
+            }
+        }
+
+        if (foundProduct == null) {
+            System.out.println("The product cannot be located. Invalid Product");
+        } else {
+            System.out.print("Update the warranty? (y) Yes, (n) No ");
+            String updateWarranty = scanner.nextLine();
+
+            if (updateWarranty.equals("y")) {
+                System.out.print("Indicate the product warranty. Enter (1) for 6 months or any other key for 2 years. ");
+                String warrantyChoice = scanner.nextLine();
+
+                if (warrantyChoice.equals("1")) {
+                    foundProduct.setWarranty("6 months");
+                } else {
+                    foundProduct.setWarranty("2 years");
+                }
+            }
+
+            System.out.print("Update the product price? (y) Yes, (n) No ");
+            String updatePrice = scanner.nextLine();
+
+            if (updatePrice.equals("y")) {
+                System.out.print("Enter the new price for " + foundProduct.getProductName() + " >> ");
+                double newPrice = Double.parseDouble(scanner.nextLine());
+                foundProduct.setPrice(newPrice);
+            }
+
+            System.out.print("Update the stock level? (y) Yes, (n) No ");
+            String updateStock = scanner.nextLine();
+
+            if (updateStock.equals("y")) {
+                System.out.print("Enter the new stock level for " + foundProduct.getProductName() + " >> ");
+                int newStock = Integer.parseInt(scanner.nextLine());
+                foundProduct.setStockLevel(newStock);
+            }
+
+            System.out.println("Product details has been updated successfully!!!");
+        }
+    }
+    
+    public void ExitApplication() {
+        System.out.println("Thank you for using the Bright Future Technologies Application. Goodbye!");
+        System.exit(0);
     }
 }
