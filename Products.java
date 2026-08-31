@@ -216,4 +216,48 @@ public class Products {
         System.out.println("Thank you for using the Bright Future Technologies Application. Goodbye!");
         System.exit(0);
     }
+      public void PrintReport() {
+        System.out.println("PRODUCT REPORT");
+        System.out.println("========================================================================");
+
+        for (int i = 0; i < productList.size(); i++) {
+            Product currentProduct = productList.get(i);
+
+            ReportData report = new ReportData(
+                currentProduct.getProductCode(),
+                currentProduct.getProductName(),
+                currentProduct.getCategory(),
+                currentProduct.getWarranty(),
+                currentProduct.getPrice(),
+                currentProduct.getStockLevel(),
+                currentProduct.getSupplier()
+            );
+
+            System.out.println("PRODUCT " + (i + 1));
+            System.out.println("------------------------------------------------------------------------");
+            System.out.println("PRODUCT CODE >>        " + report.getProductCode());
+            System.out.println("PRODUCT NAME >>        " + report.getProductName());
+            System.out.println("PRODUCT CATEGORY >>    " + report.getCategory());
+            System.out.println("PRODUCT WARRANTY >>    " + report.getWarranty());
+            System.out.println("PRODUCT PRICE >>       " + report.getPrice());
+            System.out.println("PRODUCT LEVEL >>       " + report.getStockLevel());
+            System.out.println("PRODUCT SUPPLIER >>    " + report.getSupplier());
+            System.out.println("------------------------------------------------------------------------");
+        }
+
+        double totalValue = 0;
+
+        for (int i = 0; i < productList.size(); i++) {
+            Product currentProduct = productList.get(i);
+            totalValue = totalValue + currentProduct.getPrice();
+        }
+
+        double averageValue = totalValue / productList.size();
+
+        System.out.println("========================================================================");
+        System.out.println("TOTAL PRODUCT COUNT: " + productList.size());
+        System.out.println("TOTAL PRODUCT VALUE: R " + totalValue);
+        System.out.println("AVERAGE PRODUCT VALUE: R " + averageValue);
+        System.out.println("========================================================================");
+    }
 }
