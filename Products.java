@@ -91,4 +91,36 @@ public class Products {
         productList.add(newProduct);
         System.out.println("Product details has been saved successfully");
     }
+    
+    public void SearchProduct() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Please enter the product code to search: ");
+        String searchCode = scanner.nextLine();
+
+        boolean found = false;
+
+        for (int i = 0; i < productList.size(); i++) {
+            Product currentProduct = productList.get(i);
+
+            if (currentProduct.getProductCode().equals(searchCode)) {
+                found = true;
+                System.out.println("*********************************************************************");
+                System.out.println("PRODUCT SEARCH RESULTS");
+                System.out.println("*********************************************************************");
+                System.out.println("PRODUCT CODE:          " + currentProduct.getProductCode());
+                System.out.println("PRODUCT NAME:          " + currentProduct.getProductName());
+                System.out.println("PRODUCT WARRANTY:      " + currentProduct.getWarranty());
+                System.out.println("PRODUCT CATEGORY:      " + currentProduct.getCategory());
+                System.out.println("PRODUCT PRICE:         R " + currentProduct.getPrice());
+                System.out.println("PRODUCT STOCK LEVELS:  " + currentProduct.getStockLevel());
+                System.out.println("PRODUCT SUPPLIER:      " + currentProduct.getSupplier());
+                System.out.println("*********************************************************************");
+            }
+        }
+
+        if (!found) {
+            System.out.println("The product cannot be located. Invalid Product");
+        }
+    }
 }
