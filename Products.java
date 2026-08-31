@@ -1,3 +1,9 @@
+// Name: Musa Rivisi
+// Student Number: 26054227
+// COM1321 Assignment 1
+
+
+
 import java.util.Scanner;
 
 import java.util.ArrayList;
