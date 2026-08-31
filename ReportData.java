@@ -1,4 +1,10 @@
- public class ReportData {
+// Name: Musa Rivisi
+// Student Number: 26054227
+// COM1321 Assignment 1
+
+
+
+public class ReportData {
     private String productCode;
     private String productName;
     private String category;
